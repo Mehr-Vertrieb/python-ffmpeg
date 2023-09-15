@@ -28,7 +28,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             # Hier Split-Code einfügen (Verwendung von ffmpeg oder ähnlichem)
-            split_result = split_mp3(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'output', 15)
+            split_result = split_mp3(os.path.join(app.config['UPLOAD_FOLDER'], filename), UPLOAD_FOLDER, 15)
 
             # Nach dem erfolgreichen Split löschen Sie die ursprüngliche Datei
             os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -55,7 +55,8 @@ def split_mp3(input_file, output_directory, max_size):
 
         while True:
             # Definieren Sie den Ausgabedateinamen für das aktuelle Teil
-            output_file = os.path.join(output_directory, f"part_{part_number}.mp3")
+            basisname = os.path.splitext(os.path.basename(input_file))[0]
+            output_file = os.path.join(output_directory, f"{basisname}_{part_number}.mp3")
 
             # Teilen Sie die MP3-Datei mit FFmpeg
             command = [
