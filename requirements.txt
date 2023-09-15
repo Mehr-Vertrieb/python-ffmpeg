@@ -1,2 +1,3 @@
 pyee
 typing_extensions
+Flask
