@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 # Ordner, in dem die hochgeladenen MP3-Dateien und die gesplitteten Dateien gespeichert werden
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/var/lib/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Funktion zum Überprüfen der Dateierweiterung
